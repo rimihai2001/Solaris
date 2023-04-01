@@ -68,7 +68,7 @@ public class ProceduralAsteroid : MonoBehaviour
         var indices = new int[resolution * resolution * 36];
         var _displacement = (float)rand.NextDouble();
         _meshRenderer.material.SetFloat(_displacementId, _displacement);
-        Debug.Log(_displacement);
+
         // generate the values for the vertices and indices arrays
         for (var face = 0; face < 6; face++)
         {
@@ -100,26 +100,6 @@ public class ProceduralAsteroid : MonoBehaviour
         }
         mesh.vertices = vertices;
         mesh.triangles = indices;
-        /*
-        mesh.vertices = new Vector3[]
-        {
-            new (-1.0f, -1.0f, 0.0f),
-            new (1.0f, -1.0f, 0.0f),
-            new (1.0f, 1.0f, 0.0f),
-            new (-1.0f, 1.0f, 0.0f)
-        };
-        mesh.triangles = new int[]
-        {
-            0, 3, 1,
-            3, 2, 1
-        };
-        */
         _meshFilter.mesh = mesh;
     }
-    /*
-    private void Update()
-    {
-        _meshRenderer.material.SetFloat(_planeId, Mathf.Sin(Time.time));
-    }
-    */
 }
