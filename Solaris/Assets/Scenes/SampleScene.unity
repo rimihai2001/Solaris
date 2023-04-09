@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000343568, g: 0.00032530486, b: 0.00035291692, a: 1}
+  m_IndirectSpecularColor: {r: 0.00034397625, g: 0.00032588778, b: 0.00035305807,
+    a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -981,6 +982,7 @@ GameObject:
   - component: {fileID: 538442889}
   - component: {fileID: 538442888}
   - component: {fileID: 538442887}
+  - component: {fileID: 538442891}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -1074,6 +1076,21 @@ Transform:
   m_Father: {fileID: 1474258660}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &538442891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538442886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445654280e6cc4fdc9d9dde7eebe3362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidHitRadius: 2
+  asteroidDetectionRadius: 10
+  moveSpeed: 5
 --- !u!1 &557399147
 GameObject:
   m_ObjectHideFlags: 0
