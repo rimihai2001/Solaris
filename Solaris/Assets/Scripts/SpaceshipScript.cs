@@ -179,4 +179,14 @@ public class SpaceshipScript : MonoBehaviour
         boost = context.performed;
     }
     #endregion
+
+     private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Asteroid")
+        {
+            Destroy(other.gameObject);
+            return;
+        }
+        
+    }
 }

@@ -38,8 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00034397625, g: 0.00032588778, b: 0.00035305807,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0.0003442154, g: 0.00032587603, b: 0.000353568, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1009,8 +1008,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 9.242317, y: 1.5847816, z: 1.8885397}
+  m_Center: {x: 1.1492805, y: -0.022919338, z: -0.10041809}
 --- !u!23 &538442888
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1103,6 +1102,7 @@ GameObject:
   - component: {fileID: 557399150}
   - component: {fileID: 557399149}
   - component: {fileID: 557399148}
+  - component: {fileID: 557399152}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -1305,6 +1305,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &557399152
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557399147}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &727549568
 GameObject:
   m_ObjectHideFlags: 0
