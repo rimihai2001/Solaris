@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent (typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class SpaceshipScript : MonoBehaviour
 {
     // yaw/pitch/rollTorque = how fast the spaceship rotates on all axes
@@ -57,12 +57,39 @@ public class SpaceshipScript : MonoBehaviour
     private float upDown1D;
     private float roll1D;
     private Vector2 pitchYaw;
+    // Flag to indicate if the game has started
+    public bool isStarted = false;
+
+    // Reference to the TextManager game object
+    public GameObject textManagerObject;
+    // Reference to the TextManager component
+    private TextManager textManager;
+
+    // Reference to the GameManager game object
+    public GameObject gameManagerObject;
+    // Reference to the GameManager component
+    private GameManager gameManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         // The spaceship starts with full boosting energy
         currentBoostAmount = maxBoostAmount;
+
+        // Get the TextManager component from the TextManager game object
+        textManager = textManagerObject.GetComponent<TextManager>();
+        // Get the GameManager component from the GameManager game object
+        gameManager = gameManagerObject.GetComponent<GameManager>();
+    }
+
+    void Update()
+    {
+        // Check if the Escape key is pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Call the StopGame method in the GameManager
+            gameManager.StopGame();
+        }
     }
 
     void FixedUpdate()
@@ -73,6 +100,9 @@ public class SpaceshipScript : MonoBehaviour
 
     void HandleBoosting()
     {
+        if (!isStarted)
+            return;
+
         // When boosting is activated, the boosting energy the spaceship currently has depletes until it reaches 0. When this happens, boosting
         // automatically deactivates
         // While boosting is deactivated, the boosting energy recharges
@@ -95,6 +125,9 @@ public class SpaceshipScript : MonoBehaviour
 
     void HandleMovement()
     {
+        if (!isStarted)
+            return;
+
         // Roll (rotation around the Z axis)
         rb.AddRelativeTorque(Vector3.back * roll1D * rollTorque * Time.deltaTime);
         // Pitch (rotation around the X axis)
@@ -146,14 +179,14 @@ public class SpaceshipScript : MonoBehaviour
             horizontalGlide *= leftRightGlideReduction;
         }
     }
-    
+
     // This region takes all inputs from PlayerControls to be processed in this script
     #region Input Methods
     public void OnThrust(InputAction.CallbackContext context)
     {
         thrust1D = context.ReadValue<float>();
     }
-    
+
     public void OnStrafe(InputAction.CallbackContext context)
     {
         strafe1D = context.ReadValue<float>();
@@ -180,13 +213,16 @@ public class SpaceshipScript : MonoBehaviour
     }
     #endregion
 
-     private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
+        if (!isStarted)
+            return;
         if (other.gameObject.tag == "Asteroid")
         {
+            textManager.IncreaseAsteroidsDestroyedCount();
             Destroy(other.gameObject);
             return;
         }
-        
+
     }
 }

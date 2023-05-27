@@ -6,9 +6,13 @@ public class AsteroidSpawnerScript : MonoBehaviour
 {
     public GameObject asteroidPrefab;
 
+    public GameObject textManagerObject;
+    private TextManager textManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        textManager = textManagerObject.GetComponent<TextManager>();
         //Spawn the asteroids
         SpawnAsteroid();
     }
@@ -16,13 +20,15 @@ public class AsteroidSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void SpawnAsteroid()
     {
         //How many asteroids will spawn
         int asteroidsToSpawn = Random.Range(10, 50);
+
+        textManager.InitializeAsteroidsCount(asteroidsToSpawn);
 
         for (int i = 0; i < asteroidsToSpawn; i++)
         {
@@ -32,10 +38,7 @@ public class AsteroidSpawnerScript : MonoBehaviour
             // set the position of the asteroid equal to a random point in the collider
             temp.transform.position = GetRandomPoint();
         }
-       
-       
-
-        }
+    }
 
     Vector3 GetRandomPoint()
     {
