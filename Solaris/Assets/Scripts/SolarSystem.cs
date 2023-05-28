@@ -7,6 +7,9 @@ public class SolarSystem : MonoBehaviour
     readonly float G = 100f;
     GameObject[] celestials;
 
+    public bool isStarted = false;
+    private bool velocityStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +26,14 @@ public class SolarSystem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Gravity();
+        if (isStarted)
+        {
+            if(!velocityStarted)
+            {
+                InitialVelocity();
+            }
+            Gravity();
+        }
     }
 
     void Gravity()
@@ -47,6 +57,11 @@ public class SolarSystem : MonoBehaviour
 
     void InitialVelocity()
     {
+        if (!isStarted)
+            return;
+
+        velocityStarted = true;
+
         foreach (GameObject fstCelestial in celestials)
         {
             foreach (GameObject sndCelestial in celestials)
