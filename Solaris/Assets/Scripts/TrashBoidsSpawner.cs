@@ -3,7 +3,7 @@ using UnityEngine;
 public class ThrashBoidsSpawner : MonoBehaviour
 {
     // Adjust the move speed as desired
-    public float moveSpeed = 1f;
+    public float moveSpeed = 500f;
 
     // Time interval between direction changes
     public float directionChangeInterval = 10f;
@@ -31,7 +31,7 @@ public class ThrashBoidsSpawner : MonoBehaviour
 
         for (int i = 0; i < numBoids; i++)
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(-75f, -50f), Random.Range(-75f, -50f), Random.Range(-950f, -925f));
+            Vector3 spawnPosition = new Vector3(Random.Range(-75f, -50f), Random.Range(-75f, -50f), Random.Range(975f, 1000f));
             Quaternion spawnRotation = Quaternion.identity;
             GameObject boid = Instantiate(boidPrefab, spawnPosition, spawnRotation);
             // Set the velocity of the rigidbody to move in the random direction
