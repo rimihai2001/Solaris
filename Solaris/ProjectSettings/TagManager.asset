@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Celestial
   - Asteroid
+  - SpaceTrash
+  - FireParticle
   layers:
   - Default
   - TransparentFX
